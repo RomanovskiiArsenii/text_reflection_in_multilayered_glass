@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
+        :root {
+            --screenCoeff: calc(1vh + 1vw)
+        }
+
+        html {
+            box-sizing: border-box;
+            font-size: 20px;
+        }
+
+        *,
+        *::after,
+        *::before {
+            box-sizing: inherit;
+            margin: 0;
+            padding: 0;
+        }
+
+        *::selection {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        body {
+            font-family: "Lato", sans-serif;
+            background-color: rgb(24, 24, 24);
+            color: white;
+            overflow: hidden;
+        }
+
+        .reflections-container {
+            width: 100vw;
+            height: 100vh;
+            padding: 2vw 10vw;
+        }
+
+        .reflection {
+            line-height: .8em;
+            position: absolute;
+            font-size: calc(var(--screenCoeff)*9.5);
+            transition: transform 2s ease .5s, text-shadow 3s ease .5s;
+        }
+
+        span {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reflections-container">
+        <h1 class="reflection"><span>Never </span><span>explain</span></h1>
+        <h1 class="reflection"><span>Never </span><span>explain</span></h1>
+        <h1 class="reflection"><span>Never </span><span>explain</span></h1>
+        <h1 class="reflection"><span>Never </span><span>explain</span></h1>
+        <h1 class="reflection"><span>Never </span><span>explain</span></h1>
+        <h1 class="reflection"><span>Never </span><span>explain</span></h1>
+        <h1 class="reflection"><span>Never </span><span>explain</span></h1>
+        <h1 class="reflection"><span>Never </span><span>explain</span></h1>
+        <h1 class="reflection"><span>Never </span><span>explain</span></h1>
+    </div>
+
+    <script>
+        window.onload = () => {
+            const reflections = document.querySelectorAll('.reflection');
+            for (let i = 0; i < reflections.length; i++) {
+                reflections[i].style.opacity = `0.${9 - i}`;
+                reflections[i].style.textShadow = `0 0 20px white`;
+                reflections[i].style.transform = `perspective(500px) rotateX(10deg) rotateY(10deg) rotateZ(-15deg) translate(${i * 12}%, ${i * 12}%)`;
+            }
+            setInterval(() => {
+                for (let i = 0; i < reflections.length; i++) {
+                    reflections[i].style.transform = `none`;
+                    reflections[i].style.textShadow = 'unset';
+                }
+                setTimeout(() => {
+                    for (let i = 0; i < reflections.length; i++) {
+                        reflections[i].style.textShadow = `0 0 20px white`;
+                        reflections[i].style.transform = `perspective(500px) rotateX(10deg) rotateY(10deg) rotateZ(-15deg) translate(${i * 12}%, ${i * 12}%)`;
+                    }
+                }, 4000)
+            }, 8000)
+        }
+    </script>
+</body>
+
+</html>
