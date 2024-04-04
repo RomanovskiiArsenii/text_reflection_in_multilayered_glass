@@ -74,7 +74,7 @@
             const reflections = document.querySelectorAll('.reflection');
             for (let i = 0; i < reflections.length; i++) {
                 reflections[i].style.opacity = `0.${9 - i}`;
-                reflections[i].style.textShadow = `0 0 20px white`;
+                reflections[i].style.textShadow = `0 0 ${30 - i}px white`;
                 reflections[i].style.transform = `perspective(500px) rotateX(10deg) rotateY(10deg) rotateZ(-15deg) translate(${i * 12}%, ${i * 12}%)`;
             }
             setInterval(() => {
@@ -84,7 +84,7 @@
                 }
                 setTimeout(() => {
                     for (let i = 0; i < reflections.length; i++) {
-                        reflections[i].style.textShadow = `0 0 20px white`;
+                        reflections[i].style.textShadow = `0 0 ${30 - i}px white`;
                         reflections[i].style.transform = `perspective(500px) rotateX(10deg) rotateY(10deg) rotateZ(-15deg) translate(${i * 12}%, ${i * 12}%)`;
                     }
                 }, 4000)
